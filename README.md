@@ -13,3 +13,7 @@ All rights to the original game, including its rules, setting, and associated in
 This project is not affiliated with, endorsed by, or sponsored by Blackoath Entertainment.
 
 The source code in this repository is licensed under the GNU General Public License v3.0 (GPL-3.0). This license applies only to the code contained herein and does not grant any rights to the underlying game or its intellectual property.
+
+## Credits
+
+- Choir of Flesh — Created by Alex T, Blackoath Entertainment
