@@ -1,5 +1,6 @@
 use rand::RngExt;
 
+#[derive(Debug, PartialEq)]
 pub enum Die {
     D4,
     D6,
@@ -64,6 +65,40 @@ impl Die {
 mod tests {
     use super::*;
 
-    // todo finish tests
+    #[test]
+    fn roll_is_in_range() {
+        let dice = [Die::D4, Die::D8, Die::D10, Die::D12, Die::D20, Die::D100];
+        for die in &dice {
+            for _ in 0..100 {
+                let result = die.roll();
+                assert!(
+                    result >= 1 && result <= die.sides(),
+                    "Die {:?} rolled {} which is out of range 1..={}",
+                    die, result, die.sides()
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn advantage_disadvantage_in_range() {
+        for _ in 0..100 {
+            let adv = Die::D20.roll_advantage();
+            let dis = Die::D20.roll_disadvantage();
+            assert!(adv >= 1 && adv <= 20);
+            assert!(dis >= 1 && dis <= 20);
+        }
+    }
+
+    #[test]
+    fn step_down_chain() {
+        assert_eq!(Die::D20.step_down(), Some(Die::D12));
+        assert_eq!(Die::D12.step_down(), Some(Die::D10));
+        assert_eq!(Die::D10.step_down(), Some(Die::D8));
+        assert_eq!(Die::D8.step_down(), Some(Die::D6));
+        assert_eq!(Die::D6.step_down(), Some(Die::D4));
+        assert_eq!(Die::D4.step_down(), None);
+        assert_eq!(Die::D100.step_down(), None);
+    }
 }
 
