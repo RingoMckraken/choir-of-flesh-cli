@@ -1,0 +1,19 @@
+// Character's Emotional State (D12), p.91.
+(
+    name: "Emotional State",
+    die: D12,
+    entries: [
+        (1, 1, "Happy"),
+        (2, 2, "Sad"),
+        (3, 3, "Angry"),
+        (4, 4, "Afraid"),
+        (5, 5, "Excited"),
+        (6, 6, "Calm"),
+        (7, 7, "Confused"),
+        (8, 8, "Determined"),
+        (9, 9, "Nervous"),
+        (10, 10, "Bored"),
+        (11, 11, "Jealous"),
+        (12, 12, "Hopeful"),
+    ],
+)

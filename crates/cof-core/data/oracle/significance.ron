@@ -1,0 +1,15 @@
+// Significance (D8), p.89.
+(
+    name: "Significance",
+    die: D8,
+    entries: [
+        (1, 1, "It provides some sort of benefit to the character or has some positive outcome or meaning."),
+        (2, 2, "It somehow hinders or harms the character. Bad or concerning news, unfortunate events."),
+        (3, 3, "It complicates an existing story, mission or goal."),
+        (4, 4, "It somehow helps advance towards the resolution of a current story, mission or goal."),
+        (5, 5, "A new twist is introduced. New details are revealed, a new thread in the current story."),
+        (6, 6, "It somehow expands on the current situation or ongoing events."),
+        (7, 7, "It relates to an NPC."),
+        (8, 8, "It affects one of the PCs somehow."),
+    ],
+)

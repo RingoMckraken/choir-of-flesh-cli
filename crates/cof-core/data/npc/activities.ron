@@ -1,0 +1,27 @@
+// What is the NPC Doing? (D20), p.91.
+(
+    name: "Activity",
+    die: D20,
+    entries: [
+        (1, 1, "Fleeing"),
+        (2, 2, "Hiding"),
+        (3, 3, "On a spiritual quest"),
+        (4, 4, "Starving"),
+        (5, 5, "Waiting for someone"),
+        (6, 6, "Hunting"),
+        (7, 7, "Looking for a place"),
+        (8, 8, "Searching for treasure"),
+        (9, 9, "On patrol"),
+        (10, 10, "Searching for someone"),
+        (11, 11, "Investigating"),
+        (12, 12, "Resting"),
+        (13, 13, "Praying"),
+        (14, 14, "Preparing food"),
+        (15, 15, "Repairing/crafting"),
+        (16, 16, "Being intoxicated"),
+        (17, 17, "Tending to their wounds"),
+        (18, 18, "Studying"),
+        (19, 19, "Frolicking/relaxing"),
+        (20, 20, "Talking to themselves"),
+    ],
+)

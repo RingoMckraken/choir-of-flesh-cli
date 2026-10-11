@@ -1,9 +1,10 @@
 use rand::RngExt;
+use serde::{Deserialize, Serialize};
 
 /// The dice used by Choir of Flesh (p.9).
 ///
 /// A D100 is a percentile roll made with two D10s, and a result of "00" counts as 100.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Die {
     D4,
     D6,
@@ -45,6 +46,11 @@ impl Die {
         Die::D20,
         Die::D100,
     ];
+
+    /// The die with this many faces, if the game uses one.
+    pub fn from_sides(sides: u8) -> Option<Die> {
+        Self::ALL.into_iter().find(|die| die.sides() == sides)
+    }
 
     /// The number of faces on the die.
     pub fn sides(self) -> u8 {

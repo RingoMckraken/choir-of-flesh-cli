@@ -1,0 +1,15 @@
+// Random Action Resolution (D20), p.89.
+(
+    name: "Random Action Resolution",
+    die: D20,
+    entries: [
+        (1, 1, "Critical Failure"),
+        (2, 4, "Complete Failure"),
+        (5, 7, "Failure"),
+        (8, 10, "Near Miss"),
+        (11, 13, "Minimal Success"),
+        (14, 16, "Success"),
+        (17, 19, "Great Success"),
+        (20, 20, "Critical Success"),
+    ],
+)

@@ -1,9 +1,9 @@
 # choir-of-flesh-cli
 An Unofficial Terminal UI Collection of Campaign Tools for Black Oath Entertainments (Alex T's) Choir of Flesh TTRPG 
 
-> **Status: early development.** You can found settlements (campaigns), and they're saved
-> between sessions. The core rules engine (dice, checks, Humanity, Anguish, Trauma,
-> Conditions) is in place. The tools themselves are next. The tools below are being built one milestone at a time.
+> **Status: early development.** You can found settlements (campaigns) that are saved between
+> sessions, and the **Oracle & Table Roller** is ready to play with. The core rules engine
+> (dice, checks, Humanity, Anguish, Trauma, Conditions) is in place. More tools are on the way. The tools below are being built one milestone at a time.
 
 ## What Is This?
 
@@ -16,7 +16,7 @@ full digital port of the game, and you'll still want the rulebook at hand.
 
 | Tool | What it does | Status |
 |---|---|---|
-| **Oracle & Table Roller** | Dice roller with history, Yes/No Oracle, Action/Theme, Surprise Events, NPC generator, Usage Die tracker, Undertaking generator | Planned |
+| **Oracle & Table Roller** | Dice roller, Yes/No Oracle, Action & Theme, Surprise Events, Anything of Interest, Random Action Resolution, NPC generator, Usage Dice trackers, all recorded in a campaign journal (Undertaking generator still to come) | **Available** |
 | **Character Creator & Sheet** | Guided creation (roll or choose every step), a live sheet tracking Humanity, Anguish, Trauma, Vigor, XP, inventory, and leveling | Planned |
 | **Encounter Generator** | The full encounter procedure, from encounter check to creature, difficulty, and party scaling, with complete stat blocks | Planned |
 | **Battle Map Simulator** | 5x5 combat grid with terrain, deployment, initiative, attack and injury resolution, and enemy AI driven by the rulebook's behavior tables | Planned |
@@ -34,7 +34,7 @@ flows into your Settlement, and the line of Unbroken goes on for as long as it s
 - [x] **Milestone 0 — Workspace:** project split into a rules library (`cof-core`) and the terminal app (`cof-tui`)
 - [x] **Milestone 1 — Rules Core:** checks and Target Numbers (standard and scaling tables), Humanity, Anguish and Breakdowns, Trauma, Conditions, Usage Dice
 - [x] **Milestone 2 — App Shell:** title screen → main menu → tools, campaign save/load, settings
-- [ ] **Milestone 3 — Oracle & Table Roller**
+- [x] **Milestone 3 — Oracle & Table Roller**
 - [ ] **Milestone 4 — Character Creator & Sheet**
 - [ ] **Milestone 5 — Encounter Generator**
 - [ ] **Milestone 6 — Battle Map Simulator**

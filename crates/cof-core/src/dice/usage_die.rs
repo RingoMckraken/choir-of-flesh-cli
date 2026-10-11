@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use super::Die;
 
 /// A Usage Die (p.46, p.90): tracks a dwindling resource or an approaching event with a
@@ -6,7 +8,7 @@ use super::Die;
 /// Roll it when circumstances call for it. A 1 or 2 steps it down the chain
 /// (D20 → D12 → D10 → D8 → D6 → D4). A 1 or 2 on the D4 means it's **depleted**: the torch
 /// goes out, the quiver is empty, the event happens. Written in the book as "UD8", etc.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub struct UsageDie {
     die: Die,
 }

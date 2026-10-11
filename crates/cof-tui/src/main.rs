@@ -4,6 +4,7 @@ mod screen;
 mod screens;
 mod theme;
 mod title_screen;
+mod tools;
 mod widgets;
 
 use std::io;

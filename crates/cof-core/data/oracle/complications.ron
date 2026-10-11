@@ -1,0 +1,13 @@
+// Complication (D6), p.85.
+(
+    name: "Complication",
+    die: D6,
+    entries: [
+        (1, 1, "There's an unexpected event at a very good or bad moment."),
+        (2, 2, "Something that appears to be one way is actually another."),
+        (3, 3, "A new character(s), or an existing character's true nature, is revealed (reinforcements appear, a harmless NPC is actually an enemy agent, etc.)."),
+        (4, 4, "The physical environment changes (weather, floor collapse, a trap is triggered, etc.)."),
+        (5, 5, "A useful item (key, gear, a letter) is found or lost."),
+        (6, 6, "The social environment changes (a character's mother is actually their aunt, a PC is mistaken for someone else, etc.)."),
+    ],
+)

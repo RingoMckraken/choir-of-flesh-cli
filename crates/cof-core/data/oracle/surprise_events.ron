@@ -1,0 +1,15 @@
+// Surprise/Unknown Events (2D8: one D8 picks the row, one the column), p.85-86.
+(
+    name: "Surprise Event",
+    die: D8,
+    entries: [
+        (1, 1, (kind: "Encounter", description: "The PC(s) encounter someone or something. A hostile encounter at camp is clearly a fight, but a hostile encounter in a settlement could simply be running into the particularly feisty local drunk.", flavors: ["Hostile", "Neutral", "Neutral", "Friendly"])),
+        (2, 2, (kind: "Physical", description: "A non-combat event that requires physical skills: hauling debris blocking your path, or reacting in time to a trap you set off.", flavors: ["Struggle", "Illness/Curse", "Trap", "Labor"])),
+        (3, 3, (kind: "Environment", description: "An event related to your surroundings, often a sudden change of weather or of the place itself.", flavors: ["Natural", "Weather", "Unnatural", "Deprivation"])),
+        (4, 4, (kind: "Knowledge", description: "Information the characters have or need: the location of a true Relic, or an event from years ago that explains the present.", flavors: ["Forbidden", "Secret/Hidden", "Research", "Historical"])),
+        (5, 5, (kind: "Player Character", description: "Something affecting the PCs directly: an old rival appears, gear fails, a mental breakdown.", flavors: ["Gear", "Relationship", "Health", "Emotional"])),
+        (6, 6, (kind: "Non-Player Character", description: "Something unexpected happens to a relevant NPC: an old ally resurfaces, or enemies send a hunting party.", flavors: ["Behavior Change", "Misunderstanding", "Disappearance", "Assistance Required"])),
+        (7, 7, (kind: "Location", description: "Something about the current or a nearby location: a disaster nearby, or the ruins you're exploring have a new, unexpected feature.", flavors: ["Assault", "Gathering", "Hidden", "Destroyed"])),
+        (8, 8, (kind: "Faction or Party", description: "Struggles between factions or within your own party: someone working against you, or a long-time ally disappears.", flavors: ["Internal Struggle", "External Aggression", "Struggle", "Disappearance"])),
+    ],
+)

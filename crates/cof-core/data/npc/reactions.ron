@@ -1,0 +1,13 @@
+// Initial Reaction (D10, after disposition modifiers), p.90.
+(
+    name: "Initial Reaction",
+    die: D10,
+    entries: [
+        (1, 3, "Hostile"),
+        (4, 6, "Wary"),
+        (7, 7, "Neutral"),
+        (8, 8, "Curious"),
+        (9, 9, "Friendly"),
+        (10, 10, "Helpful"),
+    ],
+)

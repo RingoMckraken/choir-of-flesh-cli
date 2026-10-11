@@ -1,0 +1,17 @@
+// NPC Nature (D10), p.91.
+(
+    name: "Nature",
+    die: D10,
+    entries: [
+        (1, 1, "Stoic"),
+        (2, 2, "Shady"),
+        (3, 3, "Cautious"),
+        (4, 4, "Curious"),
+        (5, 5, "Learned"),
+        (6, 6, "Social"),
+        (7, 7, "Practical"),
+        (8, 8, "Friendly"),
+        (9, 9, "Confrontational"),
+        (10, 10, "Pessimistic"),
+    ],
+)

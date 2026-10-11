@@ -10,19 +10,18 @@ use super::local_time;
 use crate::context::AppContext;
 use crate::screen::{Screen, Transition};
 use crate::theme;
+use crate::tools::oracle::OracleScreen;
 use crate::widgets::{Menu, page, render_menu};
 
 /// An entry on the campaign hub: a tool (with the milestone it arrives in) or settings.
 enum Entry {
+    Oracle,
     Tool { name: &'static str, milestone: u8 },
     Settings,
 }
 
 const ENTRIES: [Entry; 8] = [
-    Entry::Tool {
-        name: "Oracle & Table Roller",
-        milestone: 3,
-    },
+    Entry::Oracle,
     Entry::Tool {
         name: "Character Creator & Sheet",
         milestone: 4,
@@ -75,6 +74,7 @@ impl Screen for CampaignHub {
         let items = ENTRIES
             .iter()
             .map(|entry| match entry {
+                Entry::Oracle => Line::styled("Oracle & Table Roller", theme::text()),
                 Entry::Tool { name, milestone } => Line::from(vec![
                     Span::styled(format!("{name:<30}"), theme::text()),
                     Span::styled(format!("coming in Milestone {milestone}"), theme::dim()),
@@ -97,6 +97,7 @@ impl Screen for CampaignHub {
                 Transition::Pop
             }
             KeyCode::Enter => match self.menu.selected(ENTRIES.len()).map(|i| &ENTRIES[i]) {
+                Some(Entry::Oracle) => Transition::Push(Box::new(OracleScreen::default())),
                 Some(Entry::Tool { name, milestone }) => {
                     Transition::Push(Box::new(ComingSoon::new(name, *milestone)))
                 }

@@ -7,9 +7,13 @@
 //! are added to this struct in later milestones. New fields get serde defaults so older
 //! saves keep loading.
 
+mod journal;
 mod settings;
+mod trackers;
 
+pub use journal::JournalEntry;
 pub use settings::CampaignSettings;
+pub use trackers::UsageTracker;
 
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
@@ -30,6 +34,12 @@ pub struct Campaign {
     pub updated: DateTime<Utc>,
     #[serde(default)]
     pub settings: CampaignSettings,
+    /// Everything rolled and decided, oldest first.
+    #[serde(default)]
+    pub journal: Vec<JournalEntry>,
+    /// Named Usage Dice the player is tracking.
+    #[serde(default)]
+    pub usage_dice: Vec<UsageTracker>,
 }
 
 impl Campaign {
@@ -44,7 +54,18 @@ impl Campaign {
             created: now,
             updated: now,
             settings: CampaignSettings::default(),
+            journal: Vec::new(),
+            usage_dice: Vec::new(),
         }
+    }
+
+    /// Adds an entry to the journal.
+    pub fn record(&mut self, source: impl Into<String>, text: impl Into<String>) {
+        self.journal.push(JournalEntry {
+            at: Utc::now(),
+            source: source.into(),
+            text: text.into(),
+        });
     }
 }
 
@@ -57,6 +78,11 @@ mod tests {
     fn json_round_trip() {
         let mut campaign = Campaign::new("last-rest", "Last Rest");
         campaign.settings.tn_table = TnTable::Scaling;
+        campaign.record("Yes/No Oracle", "Likely (60%): D100 = 12 → YES");
+        campaign.usage_dice.push(UsageTracker::new(
+            "Torch",
+            crate::dice::UsageDie::new(crate::dice::Die::D4).unwrap(),
+        ));
         let json = serde_json::to_string(&campaign).unwrap();
         let back: Campaign = serde_json::from_str(&json).unwrap();
         assert_eq!(back, campaign);
@@ -74,5 +100,6 @@ mod tests {
         }"#;
         let campaign: Campaign = serde_json::from_str(json).unwrap();
         assert_eq!(campaign.settings, CampaignSettings::default());
+        assert!(campaign.journal.is_empty() && campaign.usage_dice.is_empty());
     }
 }

@@ -4,6 +4,8 @@
 
 pub mod campaign;
 pub mod dice;
+pub mod oracle;
 pub mod rules;
 pub mod settlement;
 pub mod storage;
+pub mod tables;

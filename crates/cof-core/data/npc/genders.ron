@@ -1,0 +1,10 @@
+// Gender (D6), p.91.
+(
+    name: "Gender",
+    die: D6,
+    entries: [
+        (1, 2, "Female appearance"),
+        (3, 4, "Male appearance"),
+        (5, 6, "Androgynous appearance"),
+    ],
+)

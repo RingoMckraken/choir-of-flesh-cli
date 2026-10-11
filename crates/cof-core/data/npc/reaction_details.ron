@@ -1,0 +1,19 @@
+// Character's Reaction - Detail (D12), p.90.
+(
+    name: "Reaction Detail",
+    die: D12,
+    entries: [
+        (1, 1, "Dismissive"),
+        (2, 2, "Interested"),
+        (3, 3, "Bored"),
+        (4, 4, "Grateful"),
+        (5, 5, "Angered"),
+        (6, 6, "Confused"),
+        (7, 7, "Distracted"),
+        (8, 8, "Disapproving"),
+        (9, 9, "Excited"),
+        (10, 10, "Amazed"),
+        (11, 11, "Sad"),
+        (12, 12, "Nervous"),
+    ],
+)
