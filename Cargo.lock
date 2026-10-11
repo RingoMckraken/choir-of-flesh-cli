@@ -53,9 +53,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "choir-of-flesh-cli"
+name = "cof-core"
 version = "0.1.0"
 dependencies = [
+ "rand",
+]
+
+[[package]]
+name = "cof-tui"
+version = "0.1.0"
+dependencies = [
+ "cof-core",
  "crossterm",
  "rand",
  "ratatui",

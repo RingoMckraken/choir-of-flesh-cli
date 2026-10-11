@@ -1,9 +1,14 @@
-
 const HUMANITY_MAX_DEFAULT: u8 = 20;
 
 pub struct Humanity {
     current: u8,
     max: u8,
+}
+
+impl Default for Humanity {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl Humanity {
@@ -16,10 +21,7 @@ impl Humanity {
 
     /// This constructor covers the Empathic skill which raises maximum humanity to 22
     pub fn new_with_max(max: u8) -> Humanity {
-        Humanity {
-            current: max,
-            max: max,
-        }
+        Humanity { current: max, max }
     }
 
     pub fn current(&self) -> u8 {

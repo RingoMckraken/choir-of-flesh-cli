@@ -1,5 +1,5 @@
 # choir-of-flesh-cli
-An Unofficial Terminal UI Adaptation of Black Oath Entertainments (Alex T's) Choir of Flesh TTRPG 
+An Unofficial Terminal UI Collection of Campaign Tools for Black Oath Entertainments (Alex T's) Choir of Flesh TTRPG 
 
 ##
 TODO: Project Roadmap, Feature List and Installation Instruction

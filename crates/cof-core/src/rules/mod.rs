@@ -1,11 +1,12 @@
+mod anguish;
 mod checks;
 mod humanity;
-mod anguish;
 
-pub use checks::{Difficulty, CheckResult, CheckOutcome, roll_check, dynamic_tn, roll_dynamic_check};
-pub use humanity::Humanity;
 pub use anguish::{Anguish, BreakdownResult};
-
+pub use checks::{
+    CheckOutcome, CheckResult, Difficulty, dynamic_tn, roll_check, roll_dynamic_check,
+};
+pub use humanity::Humanity;
 
 #[cfg(test)]
 mod tests {
@@ -21,11 +22,17 @@ mod tests {
         for _ in 0..1000 {
             let outcome = roll_check(0, 15);
             if outcome.result == CheckResult::CriticalSuccess {
-                assert_eq!(outcome.roll, 20, "CriticalSuccess should only occur on a roll of 20");
+                assert_eq!(
+                    outcome.roll, 20,
+                    "CriticalSuccess should only occur on a roll of 20"
+                );
                 saw_crit = true;
             }
         }
-        assert!(saw_crit, "After 1000 rolls, never saw a CriticalSuccess - something is wrong");
+        assert!(
+            saw_crit,
+            "After 1000 rolls, never saw a CriticalSuccess - something is wrong"
+        );
     }
 
     #[test]
@@ -34,11 +41,17 @@ mod tests {
         for _ in 0..1000 {
             let outcome = roll_check(10, 5);
             if outcome.result == CheckResult::CriticalFailure {
-                assert_eq!(outcome.roll, 1, "CriticalFailure should only occur on a roll of 1");
+                assert_eq!(
+                    outcome.roll, 1,
+                    "CriticalFailure should only occur on a roll of 1"
+                );
                 saw_crit = true;
             }
         }
-        assert!(saw_crit, "After 1000 rolls, never saw a CriticalFailure - something is wrong");
+        assert!(
+            saw_crit,
+            "After 1000 rolls, never saw a CriticalFailure - something is wrong"
+        );
     }
 
     #[test]
@@ -50,7 +63,10 @@ mod tests {
             let outcome = roll_check(10, 11);
             if outcome.result == CheckResult::Success {
                 saw_success = true;
-                assert!(outcome.margin >= 0, "Success should have non-negative margin");
+                assert!(
+                    outcome.margin >= 0,
+                    "Success should have non-negative margin"
+                );
             }
         }
         assert!(saw_success);
@@ -78,9 +94,12 @@ mod tests {
             let modifier: i8 = 3;
             let tn: u8 = 12;
             let outcome = roll_check(modifier, tn);
-            let expected_margin = outcome.roll as i8 + modifier  - tn as i8;
-            assert_eq!(outcome.margin, expected_margin,
-                       "Margin mismatch: roll={}, modifier={}, tn={}", outcome.roll, modifier, tn);
+            let expected_margin = outcome.roll as i8 + modifier - tn as i8;
+            assert_eq!(
+                outcome.margin, expected_margin,
+                "Margin mismatch: roll={}, modifier={}, tn={}",
+                outcome.roll, modifier, tn
+            );
         }
     }
 

@@ -1,9 +1,14 @@
-[package]
-name = "choir-of-flesh-cli"
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
 version = "0.1.0"
 edition = "2024"
+license = "GPL-3.0-only"
 
-[dependencies]
+[workspace.dependencies]
+cof-core = { path = "crates/cof-core" }
 rand = "0.10.1"
 ratatui = "0.29"
 crossterm = "0.28"

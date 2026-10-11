@@ -2,18 +2,18 @@ use std::io;
 use std::time::{Duration, Instant};
 
 use crossterm::{
-    event::{self, Event, KeyCode},
-    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
     ExecutableCommand,
+    event::{self, Event, KeyCode},
+    terminal::{EnterAlternateScreen, LeaveAlternateScreen, disable_raw_mode, enable_raw_mode},
 };
 use rand::RngExt;
 use ratatui::{
+    Terminal,
     backend::CrosstermBackend,
     style::{Color, Style},
     symbols::Marker,
     text::Span,
     widgets::canvas::{Canvas, Line as CanvasLine},
-    Terminal,
 };
 
 // ---------------------------------------------------------------------------
@@ -91,12 +91,12 @@ const FLESH: [&str; 5] = [
 
 // Canvas y for the top row of each word (row 0 of the art array).
 const Y_CHOIR: f64 = 80.0;
-const Y_OF:    f64 = 62.0;
+const Y_OF: f64 = 62.0;
 const Y_FLESH: f64 = 44.0;
 
-const TICK_MS:         u64   = 60;
-const REVEAL_PER_TICK: usize = 4;  // characters unveiled per tick (~37/sec)
-const MAX_DROPS:       usize = 60;
+const TICK_MS: u64 = 60;
+const REVEAL_PER_TICK: usize = 4; // characters unveiled per tick (~37/sec)
+const MAX_DROPS: usize = 60;
 
 // ---------------------------------------------------------------------------
 // Data structures
@@ -105,26 +105,24 @@ const MAX_DROPS:       usize = 60;
 struct CharPos {
     canvas_x: f64,
     canvas_y: f64,
-    ch:       char,
-    word:     usize, // 0=CHOIR, 1=OF, 2=FLESH
-    row:      usize, // 0 = topmost row of that word's art
+    ch: char,
 }
 
 struct Drop {
-    x:        f64, // fixed canvas x tied to a letter position
-    y:        f64, // current canvas y, decreases each tick
+    x: f64,        // fixed canvas x tied to a letter position
+    y: f64,        // current canvas y, decreases each tick
     origin_y: f64, // canvas y of the letter this drop fell from
-    speed:    f64, // canvas units per tick
+    speed: f64,    // canvas units per tick
 }
 
 enum Phase {
-    Drawing  { chars_revealed: usize },
+    Drawing { chars_revealed: usize },
     Bleeding { drops: Vec<Drop> },
 }
 
 struct TitleScreen {
     all_chars: Vec<CharPos>,
-    phase:     Phase,
+    phase: Phase,
 }
 
 // ---------------------------------------------------------------------------
@@ -132,17 +130,13 @@ struct TitleScreen {
 // ---------------------------------------------------------------------------
 
 fn build_chars(width: u16, height: u16) -> Vec<CharPos> {
-    let char_w = 100.0 / width  as f64;
+    let char_w = 100.0 / width as f64;
     let char_h = 100.0 / height as f64;
 
-    let words: &[(&[&str], usize, f64)] = &[
-        (&CHOIR, 0, Y_CHOIR),
-        (&OF,    1, Y_OF),
-        (&FLESH, 2, Y_FLESH),
-    ];
+    let words: &[(&[&str], f64)] = &[(&CHOIR, Y_CHOIR), (&OF, Y_OF), (&FLESH, Y_FLESH)];
 
     let mut chars = Vec::new();
-    for &(art, word_idx, y_base) in words {
+    for &(art, y_base) in words {
         let max_len = art.iter().map(|r| r.len()).max().unwrap_or(0);
         // Centre the word horizontally in the [0, 100] canvas.
         let x_start = 50.0 - (max_len as f64 * char_w) / 2.0;
@@ -154,8 +148,6 @@ fn build_chars(width: u16, height: u16) -> Vec<CharPos> {
                     canvas_x: x_start + col as f64 * char_w,
                     canvas_y,
                     ch,
-                    word: word_idx,
-                    row,
                 });
             }
         }
@@ -169,8 +161,8 @@ fn init_drops() -> Vec<Drop> {
     let mut rng = rand::rng();
     (0..MAX_DROPS)
         .map(|_| {
-            let x      = rng.random::<f64>() * 100.0;
-            let speed  = 0.6 + rng.random::<f64>() * 1.2;
+            let x = rng.random::<f64>() * 100.0;
+            let speed = 0.6 + rng.random::<f64>() * 1.2;
             let offset = rng.random::<f64>() * 100.0; // spread out across full height at startup
             Drop {
                 x,
@@ -196,10 +188,10 @@ pub fn run() -> io::Result<()> {
 }
 
 fn run_loop() -> io::Result<()> {
-    let backend  = CrosstermBackend::new(io::stdout());
+    let backend = CrosstermBackend::new(io::stdout());
     let mut terminal = Terminal::new(backend)?;
 
-    let size      = terminal.size()?;
+    let size = terminal.size()?;
     let all_chars = build_chars(size.width, size.height);
 
     let mut screen = TitleScreen {
@@ -207,9 +199,9 @@ fn run_loop() -> io::Result<()> {
         phase: Phase::Drawing { chars_revealed: 0 },
     };
 
-    let tick_dur      = Duration::from_millis(TICK_MS);
+    let tick_dur = Duration::from_millis(TICK_MS);
     let mut last_tick = Instant::now();
-    let title_style   = Style::default().fg(Color::Rgb(220, 220, 200)); // off-white
+    let title_style = Style::default().fg(Color::Rgb(220, 220, 200)); // off-white
 
     loop {
         terminal.draw(|f| {
@@ -222,8 +214,8 @@ fn run_loop() -> io::Result<()> {
                 .paint(|ctx| {
                     // Determine how many characters to render.
                     let limit = match &screen.phase {
-                        Phase::Drawing  { chars_revealed } => *chars_revealed,
-                        Phase::Bleeding { .. }             => screen.all_chars.len(),
+                        Phase::Drawing { chars_revealed } => *chars_revealed,
+                        Phase::Bleeding { .. } => screen.all_chars.len(),
                     };
 
                     // Render the title (up to `limit` characters).
@@ -242,13 +234,17 @@ fn run_loop() -> io::Result<()> {
                         for drop in drops {
                             // Tapered teardrop: dark tail → bright tip.
                             ctx.draw(&CanvasLine {
-                                x1: drop.x, y1: drop.y + 1.5,
-                                x2: drop.x, y2: drop.y + 0.5,
+                                x1: drop.x,
+                                y1: drop.y + 1.5,
+                                x2: drop.x,
+                                y2: drop.y + 0.5,
                                 color: Color::Rgb(120, 0, 0),
                             });
                             ctx.draw(&CanvasLine {
-                                x1: drop.x, y1: drop.y + 0.5,
-                                x2: drop.x, y2: drop.y,
+                                x1: drop.x,
+                                y1: drop.y + 0.5,
+                                x2: drop.x,
+                                y2: drop.y,
                                 color: Color::Red,
                             });
                         }
@@ -260,12 +256,11 @@ fn run_loop() -> io::Result<()> {
 
         // Input: q or Esc exits.
         let timeout = tick_dur.saturating_sub(last_tick.elapsed());
-        if event::poll(timeout)? {
-            if let Event::Key(key) = event::read()? {
-                if matches!(key.code, KeyCode::Char('q') | KeyCode::Esc) {
-                    break;
-                }
-            }
+        if event::poll(timeout)?
+            && let Event::Key(key) = event::read()?
+            && matches!(key.code, KeyCode::Char('q') | KeyCode::Esc)
+        {
+            break;
         }
 
         // Tick: advance state.
@@ -283,7 +278,7 @@ fn run_loop() -> io::Result<()> {
                     for drop in drops.iter_mut() {
                         drop.y -= drop.speed;
                         if drop.y < 5.0 {
-                            drop.y     = drop.origin_y;
+                            drop.y = drop.origin_y;
                             drop.speed = 0.4 + rng.random::<f64>() * 0.6;
                         }
                     }

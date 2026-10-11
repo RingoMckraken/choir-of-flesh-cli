@@ -37,7 +37,7 @@ pub enum CheckResult {
     CriticalSuccess,
     Success,
     Failure,
-    CriticalFailure
+    CriticalFailure,
 }
 
 #[derive(Debug)]
@@ -104,7 +104,7 @@ pub fn roll_dynamic_check(
         return CheckOutcome {
             result: CheckResult::CriticalFailure,
             roll,
-            margin: (roll as i8 + modifier + mastery + burden) - tn as i8
+            margin: (roll as i8 + modifier + mastery + burden) - tn as i8,
         };
     }
 
@@ -117,7 +117,7 @@ pub fn roll_dynamic_check(
         CheckResult::Failure
     };
 
-    CheckOutcome{
+    CheckOutcome {
         result,
         roll,
         margin,

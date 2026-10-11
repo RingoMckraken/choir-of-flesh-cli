@@ -74,7 +74,9 @@ mod tests {
                 assert!(
                     result >= 1 && result <= die.sides(),
                     "Die {:?} rolled {} which is out of range 1..={}",
-                    die, result, die.sides()
+                    die,
+                    result,
+                    die.sides()
                 );
             }
         }
@@ -85,8 +87,8 @@ mod tests {
         for _ in 0..100 {
             let adv = Die::D20.roll_advantage();
             let dis = Die::D20.roll_disadvantage();
-            assert!(adv >= 1 && adv <= 20);
-            assert!(dis >= 1 && dis <= 20);
+            assert!((1..=20).contains(&adv));
+            assert!((1..=20).contains(&dis));
         }
     }
 
@@ -101,4 +103,3 @@ mod tests {
         assert_eq!(Die::D100.step_down(), None);
     }
 }
-

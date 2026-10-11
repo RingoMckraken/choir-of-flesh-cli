@@ -1,5 +1,3 @@
-mod dice;
-mod rules;
 mod title_screen;
 
 fn main() {

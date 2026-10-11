@@ -20,6 +20,12 @@ pub struct Anguish {
     current: u8,
 }
 
+impl Default for Anguish {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Anguish {
     pub fn new() -> Self {
         Self { current: 0 }
@@ -61,5 +67,4 @@ impl Anguish {
             _ => BreakdownResult::MomentOfClarity,
         }
     }
-
 }
