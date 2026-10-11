@@ -1,8 +1,8 @@
 # choir-of-flesh-cli
 An Unofficial Terminal UI Collection of Campaign Tools for Black Oath Entertainments (Alex T's) Choir of Flesh TTRPG 
 
-> **Status: early development.** Right now the app plays the title screen and the core dice and
-> check rules are in place. The tools below are being built one milestone at a time.
+> **Status: early development.** Right now the app plays the title screen, and the core rules
+> engine (dice, checks, Humanity, Anguish, Trauma, Conditions) is in place. The tools below are being built one milestone at a time.
 
 ## What Is This?
 
@@ -29,7 +29,7 @@ Incursion loot flows into your Settlement, and combat Trauma stays on your chara
 ## Roadmap
 
 - [x] **Milestone 0 — Workspace:** project split into a rules library (`cof-core`) and the terminal app (`cof-tui`)
-- [ ] **Milestone 1 — Rules Core:** checks and Target Numbers (standard and scaling tables), Humanity, Anguish and Breakdowns, Trauma, Conditions, Usage Dice
+- [x] **Milestone 1 — Rules Core:** checks and Target Numbers (standard and scaling tables), Humanity, Anguish and Breakdowns, Trauma, Conditions, Usage Dice
 - [ ] **Milestone 2 — App Shell:** title screen → main menu → tools, campaign save/load, settings
 - [ ] **Milestone 3 — Oracle & Table Roller**
 - [ ] **Milestone 4 — Character Creator & Sheet**
