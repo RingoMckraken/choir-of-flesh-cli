@@ -10,6 +10,7 @@ name = "choir-of-flesh"
 path = "src/main.rs"
 
 [dependencies]
+chrono.workspace = true
 cof-core.workspace = true
 rand.workspace = true
 ratatui.workspace = true

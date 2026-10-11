@@ -1,7 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 use super::Difficulty;
 
 /// Which Dynamic Target Number table to use. This is a campaign setting.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub enum TnTable {
     /// The default table (p.43). Every point of modifier raises the TN by one, so a
     /// character's Attributes never make a task easier, only Mastery and Burden do.

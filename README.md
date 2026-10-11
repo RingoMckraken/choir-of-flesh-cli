@@ -1,8 +1,9 @@
 # choir-of-flesh-cli
 An Unofficial Terminal UI Collection of Campaign Tools for Black Oath Entertainments (Alex T's) Choir of Flesh TTRPG 
 
-> **Status: early development.** Right now the app plays the title screen, and the core rules
-> engine (dice, checks, Humanity, Anguish, Trauma, Conditions) is in place. The tools below are being built one milestone at a time.
+> **Status: early development.** You can found settlements (campaigns), and they're saved
+> between sessions. The core rules engine (dice, checks, Humanity, Anguish, Trauma,
+> Conditions) is in place. The tools themselves are next. The tools below are being built one milestone at a time.
 
 ## What Is This?
 
@@ -23,14 +24,16 @@ full digital port of the game, and you'll still want the rulebook at hand.
 | **Incursion Explorer** | Generates the 3x3 Location with Points of Interest, Dangerous Terrain, and the Extraction Zone, and tracks your Incursion Action budget | Planned |
 | **Settlement Manager** | Resources, structures, the six-step Settlement Phase, events, and Notable Citizens | Planned |
 
-All tools share one saved **campaign**: Rumors gathered on the Travail unlock Incursions,
-Incursion loot flows into your Settlement, and combat Trauma stays on your character.
+All tools share one saved **campaign**, built around your **settlement**. In Choir of
+Flesh the settlement is the real protagonist: Unbroken die, and a successor rises from the
+population to carry on. Rumors gathered on the Travail unlock Incursions, Incursion loot
+flows into your Settlement, and the line of Unbroken goes on for as long as it survives.
 
 ## Roadmap
 
 - [x] **Milestone 0 — Workspace:** project split into a rules library (`cof-core`) and the terminal app (`cof-tui`)
 - [x] **Milestone 1 — Rules Core:** checks and Target Numbers (standard and scaling tables), Humanity, Anguish and Breakdowns, Trauma, Conditions, Usage Dice
-- [ ] **Milestone 2 — App Shell:** title screen → main menu → tools, campaign save/load, settings
+- [x] **Milestone 2 — App Shell:** title screen → main menu → tools, campaign save/load, settings
 - [ ] **Milestone 3 — Oracle & Table Roller**
 - [ ] **Milestone 4 — Character Creator & Sheet**
 - [ ] **Milestone 5 — Encounter Generator**
@@ -66,7 +69,22 @@ This puts the binary in `~/.cargo/bin`, which rustup adds to your `PATH`.
 
 ### Controls
 
-Press `q` or `Esc` to quit.
+The title screen waits for any key (`q` quits). Every screen lists its keys along the bottom
+edge. Arrow keys move, `Enter` opens, `Esc` goes back, and `Ctrl+C` quits from anywhere.
+
+### Where Saves Live
+
+By default campaigns are saved in your system's data folder:
+
+| OS | Folder |
+|---|---|
+| macOS | `~/Library/Application Support/choir-of-flesh/campaigns/` |
+| Linux | `~/.local/share/choir-of-flesh/campaigns/` |
+| Windows | `%APPDATA%\choir-of-flesh\data\campaigns\` |
+
+In **Settings** (`s` on the main menu) you can switch to a `saves` folder in the directory
+you run the toolbox from. Saves are plain JSON, and the previous version of each is kept as
+a `.bak` file.
 
 ### For Developers
 

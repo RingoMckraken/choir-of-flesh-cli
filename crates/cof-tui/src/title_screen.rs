@@ -1,15 +1,10 @@
 use std::io;
 use std::time::{Duration, Instant};
 
-use crossterm::{
-    ExecutableCommand,
-    event::{self, Event, KeyCode},
-    terminal::{EnterAlternateScreen, LeaveAlternateScreen, disable_raw_mode, enable_raw_mode},
-};
+use crossterm::event::{self, Event, KeyCode, KeyEventKind};
 use rand::RngExt;
 use ratatui::{
-    Terminal,
-    backend::CrosstermBackend,
+    DefaultTerminal,
     style::{Color, Style},
     symbols::Marker,
     text::Span,
@@ -178,20 +173,21 @@ fn init_drops() -> Vec<Drop> {
 // Entry point
 // ---------------------------------------------------------------------------
 
-pub fn run() -> io::Result<()> {
-    enable_raw_mode()?;
-    io::stdout().execute(EnterAlternateScreen)?;
-    let result = run_loop();
-    let _ = disable_raw_mode();
-    let _ = io::stdout().execute(LeaveAlternateScreen);
-    result
+/// What the player chose on the title screen.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TitleChoice {
+    Enter,
+    Quit,
 }
 
-fn run_loop() -> io::Result<()> {
-    let backend = CrosstermBackend::new(io::stdout());
-    let mut terminal = Terminal::new(backend)?;
+const PROMPT: &str = "press any key to enter  ·  q to quit";
+const Y_PROMPT: f64 = 12.0;
 
+/// Plays the title animation until a key is pressed: `q`/Esc quits, anything else enters.
+pub fn run(terminal: &mut DefaultTerminal) -> io::Result<TitleChoice> {
     let size = terminal.size()?;
+    let char_w = 100.0 / f64::from(size.width.max(1));
+    let prompt_x = 50.0 - PROMPT.chars().count() as f64 * char_w / 2.0;
     let all_chars = build_chars(size.width, size.height);
 
     let mut screen = TitleScreen {
@@ -202,6 +198,7 @@ fn run_loop() -> io::Result<()> {
     let tick_dur = Duration::from_millis(TICK_MS);
     let mut last_tick = Instant::now();
     let title_style = Style::default().fg(Color::Rgb(220, 220, 200)); // off-white
+    let prompt_style = Style::default().fg(Color::Rgb(120, 120, 110));
 
     loop {
         terminal.draw(|f| {
@@ -229,6 +226,11 @@ fn run_loop() -> io::Result<()> {
                         }
                     }
 
+                    // Once the title is fully drawn, invite the player in.
+                    if matches!(screen.phase, Phase::Bleeding { .. }) {
+                        ctx.print(prompt_x, Y_PROMPT, Span::styled(PROMPT, prompt_style));
+                    }
+
                     // Render blood drops (bleeding phase only).
                     if let Phase::Bleeding { drops } = &screen.phase {
                         for drop in drops {
@@ -254,13 +256,16 @@ fn run_loop() -> io::Result<()> {
             f.render_widget(canvas, area);
         })?;
 
-        // Input: q or Esc exits.
+        // Input: q or Esc quits, any other key enters.
         let timeout = tick_dur.saturating_sub(last_tick.elapsed());
         if event::poll(timeout)?
             && let Event::Key(key) = event::read()?
-            && matches!(key.code, KeyCode::Char('q') | KeyCode::Esc)
+            && key.kind == KeyEventKind::Press
         {
-            break;
+            return Ok(match key.code {
+                KeyCode::Char('q') | KeyCode::Esc => TitleChoice::Quit,
+                _ => TitleChoice::Enter,
+            });
         }
 
         // Tick: advance state.
@@ -294,6 +299,4 @@ fn run_loop() -> io::Result<()> {
             last_tick = Instant::now();
         }
     }
-
-    Ok(())
 }
