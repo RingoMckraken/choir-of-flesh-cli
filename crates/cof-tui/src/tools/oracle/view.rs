@@ -56,6 +56,10 @@ fn menu_line(screen: &OracleScreen, procedure: Procedure) -> Line<'static> {
         )),
         Procedure::Resolution => Some(format!("◀ {:+} ▶", screen.resolution_modifier)),
         Procedure::Npc => Some(format!("◀ {} ▶", screen.disposition.name())),
+        Procedure::Undertaking => Some(format!(
+            "◀ {} ▶",
+            screen.undertaking.map_or("Full arc", |s| s.name())
+        )),
         Procedure::Dice => Some(format!(
             "◀ {} × D{} ▶",
             screen.dice_count,

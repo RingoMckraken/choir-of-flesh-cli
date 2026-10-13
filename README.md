@@ -16,7 +16,7 @@ full digital port of the game, and you'll still want the rulebook at hand.
 
 | Tool | What it does | Status |
 |---|---|---|
-| **Oracle & Table Roller** | Dice roller, Yes/No Oracle, Action & Theme, Surprise Events, Anything of Interest, Random Action Resolution, NPC generator, Usage Dice trackers, all recorded in a campaign journal (Undertaking generator still to come) | **Available** |
+| **Oracle & Table Roller** | Dice roller, Yes/No Oracle, Action & Theme, Surprise Events, Anything of Interest, Random Action Resolution, NPC generator, Undertaking generator, Usage Dice trackers, all recorded in a campaign journal | **Available** |
 | **Character Creator & Sheet** | Guided creation (roll or choose every step), a live sheet tracking Humanity, Anguish, Trauma, Vigor, XP, inventory, and leveling | Planned |
 | **Encounter Generator** | The full encounter procedure, from encounter check to creature, difficulty, and party scaling, with complete stat blocks | Planned |
 | **Battle Map Simulator** | 5x5 combat grid with terrain, deployment, initiative, attack and injury resolution, and enemy AI driven by the rulebook's behavior tables | Planned |

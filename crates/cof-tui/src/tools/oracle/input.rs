@@ -1,5 +1,5 @@
 use cof_core::dice::{DiceExpr, Die};
-use cof_core::oracle;
+use cof_core::oracle::{self, UndertakingStep};
 use crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
 
 use super::usage_dice::UsageDiceScreen;
@@ -76,6 +76,7 @@ fn adjust(screen: &mut OracleScreen, step: i8) -> Transition {
             screen.resolution_modifier = (screen.resolution_modifier + step).clamp(-5, 5);
         }
         Procedure::Npc => screen.disposition = screen.disposition.cycled(step),
+        Procedure::Undertaking => screen.undertaking = cycle_undertaking(screen.undertaking, step),
         Procedure::Dice => {
             let len = Die::ALL.len() as i16;
             let index = Die::ALL
@@ -87,6 +88,16 @@ fn adjust(screen: &mut OracleScreen, step: i8) -> Transition {
         _ => {}
     }
     Transition::Stay
+}
+
+/// Full arc, then each single step, wrapping around.
+fn cycle_undertaking(current: Option<UndertakingStep>, step: i8) -> Option<UndertakingStep> {
+    let choices: Vec<Option<UndertakingStep>> = std::iter::once(None)
+        .chain(UndertakingStep::ALL.map(Some))
+        .collect();
+    let len = choices.len() as i16;
+    let index = choices.iter().position(|&c| c == current).unwrap_or(0) as i16;
+    choices[(index + i16::from(step)).rem_euclid(len) as usize]
 }
 
 /// +/- change how many dice the free roller throws (only on the Roll Dice row).
@@ -107,6 +118,10 @@ fn run(screen: &mut OracleScreen, ctx: &mut AppContext) -> Transition {
         Procedure::Interest => oracle::anything_of_interest().to_string(),
         Procedure::Resolution => oracle::resolve_action(screen.resolution_modifier).to_string(),
         Procedure::Npc => oracle::generate_npc(screen.disposition).to_string(),
+        Procedure::Undertaking => match screen.undertaking {
+            None => oracle::undertaking().to_string(),
+            Some(step) => oracle::undertaking_step(step).to_string(),
+        },
         Procedure::Dice => screen.dice().roll().to_string(),
         Procedure::UsageDice => return Transition::Push(Box::new(UsageDiceScreen::default())),
     };

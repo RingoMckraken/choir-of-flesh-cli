@@ -5,7 +5,7 @@ mod usage_dice;
 mod view;
 
 use cof_core::dice::{DiceExpr, Die};
-use cof_core::oracle::{Disposition, Likelihood};
+use cof_core::oracle::{Disposition, Likelihood, UndertakingStep};
 use crossterm::event::KeyEvent;
 use ratatui::Frame;
 use ratatui::layout::Rect;
@@ -23,18 +23,20 @@ enum Procedure {
     Interest,
     Resolution,
     Npc,
+    Undertaking,
     Dice,
     UsageDice,
 }
 
 impl Procedure {
-    const ALL: [Procedure; 8] = [
+    const ALL: [Procedure; 9] = [
         Procedure::YesNo,
         Procedure::ActionTheme,
         Procedure::Surprise,
         Procedure::Interest,
         Procedure::Resolution,
         Procedure::Npc,
+        Procedure::Undertaking,
         Procedure::Dice,
         Procedure::UsageDice,
     ];
@@ -47,6 +49,7 @@ impl Procedure {
             Procedure::Interest => "Anything of Interest?",
             Procedure::Resolution => "Random Action Resolution",
             Procedure::Npc => "Generate NPC",
+            Procedure::Undertaking => "Undertaking",
             Procedure::Dice => "Roll Dice",
             Procedure::UsageDice => "Usage Dice",
         }
@@ -64,6 +67,8 @@ pub struct OracleScreen {
     likelihood: Likelihood,
     disposition: Disposition,
     resolution_modifier: i8,
+    /// Which Undertaking step to roll; `None` rolls a full arc.
+    undertaking: Option<UndertakingStep>,
     /// The free dice roller: how many of which die (no modifier; players add their own).
     dice_count: u8,
     dice_die: Die,
@@ -79,6 +84,7 @@ impl Default for OracleScreen {
             likelihood: Likelihood::default(),
             disposition: Disposition::default(),
             resolution_modifier: 0,
+            undertaking: None,
             dice_count: 1,
             dice_die: Die::D20,
             confirm_clear: false,
