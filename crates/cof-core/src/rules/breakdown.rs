@@ -1,4 +1,18 @@
+use std::collections::HashMap;
+use std::sync::LazyLock;
+
+use serde::{Deserialize, Serialize};
+
 use crate::dice::Die;
+
+/// The Breakdown table's text (p.49), parsed on first use.
+static DESCRIPTIONS: LazyLock<HashMap<Breakdown, String>> = LazyLock::new(|| {
+    let source = include_str!(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/data/rules/breakdowns.ron"
+    ));
+    ron::from_str(source).unwrap_or_else(|e| panic!("bundled breakdowns.ron is invalid: {e}"))
+});
 
 /// The Breakdown table (D10, p.49): what happens when a character fails an Anguish Check.
 ///
@@ -6,7 +20,7 @@ use crate::dice::Die;
 /// choices (Moment of Clarity) or story. The two with a direct effect on Anguish have
 /// helpers on [`Anguish`](super::Anguish): `gain_permanent` for The Voice Within and
 /// `defy_clarity` for Moment of Clarity.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Breakdown {
     PanicAttack,
     ViolentOutburst,
@@ -43,6 +57,11 @@ impl Breakdown {
     /// Rolls a D10 on the table.
     pub fn roll() -> Breakdown {
         Self::ALL[usize::from(Die::D10.roll()) - 1]
+    }
+
+    /// What happens, as printed in the book.
+    pub fn description(self) -> &'static str {
+        &DESCRIPTIONS[&self]
     }
 
     pub fn name(self) -> &'static str {
@@ -86,6 +105,14 @@ mod tests {
                 "Moment of Clarity",
             ]
         );
+    }
+
+    #[test]
+    fn every_breakdown_has_its_text() {
+        for b in Breakdown::ALL {
+            assert!(!b.description().is_empty(), "{b:?}");
+        }
+        assert!(Breakdown::PanicAttack.description().contains("-1 Burden"));
     }
 
     #[test]

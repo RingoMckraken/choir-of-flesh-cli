@@ -1,0 +1,56 @@
+// Gear & Spoils of War (Chapter VI, p.209-216). Prices are in Rations.
+// Weight: NoSlot = takes no Item Slot (the book's "-"), Light = 10 per slot, Normal = 1, Heavy = 2.
+// The Bedroll's weight is blank in the book; it's assumed Normal.
+[
+    // Melee weapons (p.212-213)
+    (name: "Arming Sword", cost: 20, weight: Normal, kind: Weapon((damage: [Slashing, Piercing], traits: [OneHanded, Guard, Versatile]))),
+    (name: "Dagger", cost: 5, weight: Normal, kind: Weapon((damage: [Slashing, Piercing], traits: [OneHanded, Agile, Finesse, Versatile]))),
+    (name: "Dane Axe", cost: 15, weight: Heavy, kind: Weapon((damage: [Slashing], traits: [TwoHanded, Brutal, Reach, Slow]))),
+    (name: "Falchion", cost: 15, weight: Normal, kind: Weapon((damage: [Slashing], traits: [OneHanded, Vicious]))),
+    (name: "Flail", cost: 10, weight: Normal, kind: Weapon((damage: [Bludgeoning], traits: [OneHanded, Sweep]))),
+    (name: "Greatsword", cost: 25, weight: Heavy, kind: Weapon((damage: [Slashing, Piercing], traits: [TwoHanded, Brutal, Sweep, Slow, Versatile]))),
+    (name: "Mace", cost: 10, weight: Normal, kind: Weapon((damage: [Bludgeoning], traits: [OneHanded, Brutal]))),
+    (name: "Maul", cost: 15, weight: Heavy, kind: Weapon((damage: [Bludgeoning], traits: [TwoHanded, Brutal, Concussive, Slow]))),
+    (name: "Quarterstaff", cost: 5, weight: Normal, kind: Weapon((damage: [Bludgeoning], traits: [TwoHanded, Guard]))),
+    (name: "Spear", cost: 10, weight: Normal, kind: Weapon((damage: [Piercing], traits: [TwoHanded, Reach]))),
+    // Ranged weapons (p.214)
+    (name: "Crossbow", cost: 25, weight: Normal, kind: Weapon((damage: [Piercing], traits: [TwoHanded, Ranged(4), Brutal, Slow]))),
+    (name: "Longbow", cost: 20, weight: Normal, kind: Weapon((damage: [Piercing], traits: [TwoHanded, Ranged(5)]))),
+    (name: "Sling", cost: 1, weight: Light, kind: Weapon((damage: [Bludgeoning], traits: [OneHanded, Ranged(3)]))),
+    (name: "Throwing Knife", cost: 2, weight: Light, kind: Weapon((damage: [Piercing], traits: [OneHanded, Agile, Finesse, Ranged(2)]))),
+    // Armor, helmets and shields (p.215-216)
+    (name: "Gambeson", cost: 30, weight: Normal, kind: Armor((slot: Padding, dr: 1)), notes: "Can be combined with other armor."),
+    (name: "Chainmail", cost: 500, weight: Heavy, kind: Armor((slot: Body, dr: 2, min_str: Some(13), stealth_disadvantage: true))),
+    (name: "Scale Armor", cost: 800, weight: Heavy, kind: Armor((slot: Body, dr: 3, min_str: Some(14), stealth_disadvantage: true))),
+    (name: "Leather Cap", cost: 40, weight: Normal, kind: Armor((slot: Helmet, dr: 1))),
+    (name: "Spangenhelm", cost: 100, weight: Normal, kind: Armor((slot: Helmet, dr: 2)), notes: "-1 Burden to perception (INT) checks."),
+    (name: "Light Shield", cost: 40, weight: Normal, kind: Armor((slot: Shield, defense_mastery: 1))),
+    (name: "Heavy Shield", cost: 80, weight: Normal, kind: Armor((slot: Shield, defense_mastery: 2))),
+    // Common gear (p.209-210)
+    (name: "Backpack", cost: 20, weight: NoSlot, kind: Backpack, notes: "+10 Item Slots. A character can equip up to two."),
+    (name: "Bedroll", cost: 5, weight: Normal, notes: "Sleeping without a bedroll reduces the number of available Exploration Turns during the Endless Travail phase by 1."),
+    (name: "Bullet Purse", cost: 2, weight: Normal, notes: "Required to carry sling bullets. It can handle up to UD8."),
+    (name: "Candle", cost: 1, weight: Light, notes: "Illuminates in a 5 ft radius. Lasts 4 hours."),
+    (name: "Chain", cost: 10, weight: Normal, notes: "10 feet."),
+    (name: "Clothing (used and ragged)", cost: 10, weight: Normal),
+    (name: "Clothing (new)", cost: 20, weight: Normal),
+    (name: "Crowbar", cost: 10, weight: Normal),
+    (name: "Flask (empty)", cost: 1, weight: Light),
+    (name: "Flint & Steel", cost: 10, weight: Light),
+    (name: "Grappling Hook", cost: 10, weight: Light, notes: "Can be thrown for a number of feet equal to STRx3."),
+    (name: "Lamp", cost: 30, weight: Normal, notes: "Illuminates in a 30 ft radius. Requires Oil. Max UD8, must be checked each 30 min."),
+    (name: "Lamp Oil", cost: 5, weight: Light, notes: "Increases a Lamp's UD by 1."),
+    (name: "Medical Supplies", cost: 5, weight: Light, notes: "Required to attempt to remove the Bleeding condition or heal. Spent upon use."),
+    (name: "Net", cost: 3, weight: Light, notes: "A character who is hit by a net is Restrained until it is freed."),
+    (name: "Quiver", cost: 10, weight: NoSlot, notes: "Required to carry arrows or bolts. It can handle up to UD8, and it takes a Backpack slot."),
+    (name: "Rope", cost: 5, weight: Normal, notes: "25 feet."),
+    (name: "Sack", cost: 2, weight: Light),
+    (name: "Tent", cost: 30, weight: Heavy, notes: "Room for 2 people."),
+    (name: "Thieves' Tools", cost: 40, weight: Normal, notes: "Required to open locks and disable traps."),
+    (name: "Torch", cost: 2, weight: Light, notes: "Illuminates in a 20 ft radius. UD4, must be checked each 20 min. Can be used as an improvised weapon (Disadvantage on all attacks, Fire damage)."),
+    (name: "Waterskin", cost: 5, weight: Light),
+    // Ammunition (p.214)
+    (name: "Arrows", cost: 5, weight: NoSlot, notes: "Increases the Usage Die by 1 stage."),
+    (name: "Bolts", cost: 5, weight: NoSlot, notes: "Increases the Usage Die by 1 stage."),
+    (name: "Sling Bullets", cost: 2, weight: NoSlot, notes: "Increases the Usage Die by 1 stage."),
+]

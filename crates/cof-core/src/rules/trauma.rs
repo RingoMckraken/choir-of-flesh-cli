@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 /// The Trauma consequence tiers (p.61). Effects are **cumulative**: a Broken character also
 /// suffers everything from Shaken, Worn, and Battered.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -42,11 +44,30 @@ impl TraumaTier {
             TraumaTier::TheEnd => "The End",
         }
     }
+
+    /// What this tier adds on top of the ones below it (p.61).
+    pub fn effect(self) -> &'static str {
+        match self {
+            TraumaTier::Unscarred => "No lasting effects.",
+            TraumaTier::Shaken => {
+                "-1 Burden on Anguish Checks. After a full rest, an Easy WIL check or no Anguish is lost."
+            }
+            TraumaTier::Worn => "-1 Burden on STR and DEX checks. Carrying Capacity halved.",
+            TraumaTier::Battered => {
+                "Permanently Fatigued. The first Injury in a fight tears open an old wound."
+            }
+            TraumaTier::Broken => "+1 Anguish whenever you gain any. -2 Initiative.",
+            TraumaTier::Shattered => {
+                "Major Injury track -1. Every morning, an Average WIL check or rest all day."
+            }
+            TraumaTier::TheEnd => "The body gives out.",
+        }
+    }
 }
 
 /// Trauma (p.60–61): the long-term toll of grievous wounds. Each Major Injury suffered in a
 /// fight adds 1 at the end of it. Reaching 13 kills the character.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct Trauma {
     current: u8,
 }

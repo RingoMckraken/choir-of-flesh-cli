@@ -1,0 +1,17 @@
+// Existing Character Relationships (D10), p.28-29.
+(
+    name: "Relationship",
+    die: D10,
+    entries: [
+        (1, 1, (title: "Kin", text: "You are family. You share the same blood, the same memories of childhood, the same name. This bond was once a simple fact of life; now, it is a lifeline. You know each other's strengths and, more importantly, each other's weaknesses.")),
+        (2, 2, (title: "Rivals", text: "Whether in trade, swordplay, or for the affection of another, you were defined by your opposition to each other. You drove one another to excellence through sheer spite. Now, with the world gone, your rivalry is a familiar comfort; a reason to keep fighting, if only to outlive the other.")),
+        (3, 3, (title: "Master & Apprentice", text: "One of you was the teacher, the other the student. A craft, a language, or the art of survival was passed down. This relationship may have been built on respect and admiration, or on resentment and frustration. The power dynamic has now been erased, leaving only the knowledge that was shared.")),
+        (4, 4, (title: "A Shared Secret", text: "Long before the apocalypse, you were bound by a dark secret: a crime committed, a forbidden love, a terrible truth you swore to never speak of. This shared guilt or shame has been your silent companion for years. With the world essentially dead and gone, your mundane secret is a strangely grounding force.")),
+        (5, 5, (title: "Comrades-in-Arms", text: "You fought side-by-side in a lord's levy or a mercenary company. You have seen each other at your bravest and most terrified. You have bled together. This bond, forged in the crucible of mundane battle, is a simple and powerful one in the face of a war beyond all understanding.")),
+        (6, 6, (title: "Unspoken Love", text: "One of you loved the other from afar, a secret affection that was never acted upon. Perhaps it was impossible due to class, marriage, or fear. Now, in the twilight of the world, that unspoken feeling manifests as a fierce, desperate protectiveness.")),
+        (7, 7, (title: "A Life Owed", text: "One of you saved the other's life. From a fire, a bandit's blade, a false accusation, or drowning. A debt was formed that could never truly be repaid. This sense of obligation, or the burden of being indebted, has followed you both into the end of the world.")),
+        (8, 8, (title: "Lord & Servant", text: "One of you held power, the other served. You were a noble and a handmaiden, a knight and a squire, a landowner and a serf. The strict social order that defined your lives has been annihilated, leaving you as equals. This new reality is a source of awkwardness, resentment, or even liberation.")),
+        (9, 9, (title: "Partners in Crime", text: "You were thieves, poachers, smugglers, or conspirators. You lived outside the law and trusted only each other to watch your back. Your survival depended on your mutual cunning and silence. The law is gone now, but the habits of a criminal life (stealth, suspicion, and resourcefulness) remain.")),
+        (10, 10, (title: "Childhood Friends", text: "You grew up together. You played in the same fields, got into the same trouble, and dreamed under the same stars. Your bond is not one of great drama, but of simple, shared history. You are the last living witness to each other's youth, a memory of a simpler time before the sky started to sing.")),
+    ],
+)

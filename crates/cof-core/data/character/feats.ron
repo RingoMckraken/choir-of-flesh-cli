@@ -1,0 +1,23 @@
+// Feat descriptions (p.14-15).
+{
+    Backstab: "You have +2 Mastery when attacking an unsuspecting target.",
+    Brawler: "You have +2 Mastery when attacking unarmed, instead of -2 Burden.",
+    DualWielder: "You no longer Shift up the target's DR when dual wielding.",
+    Explorer: "You have an additional Exploration Turn per day. This affects you only, though, even when in a party with other PCs.",
+    Firm: "You are tougher and more resilient than most, granting you +2 Mastery on Endurance checks.",
+    Frugal: "You only require 1 ration each two days.",
+    Healer: "You have +2 Mastery when making INT checks related to healing.",
+    KeenSenses: "Your character has heightened senses, granting them +2 Mastery in perception-based tasks such as detecting traps and spotting hidden objects.",
+    Lucky: "Your character has a knack for good luck, allowing them to reroll any check once per session.",
+    Marksman: "You can choose to roll a ranged attack with Disadvantage. If you do so and the attack still hits, you cause two Major Injuries instead of one.",
+    NaturalBornLeader: "Your character is an excellent motivator and has an aura of authority, giving them Advantage to PRE checks when leading groups and inspiring allies.",
+    Nimble: "Your character is quick and agile, giving them +2 Mastery in acrobatic tasks.",
+    Pathfinder: "You require 2 less Rumors to find a Point of Interest.",
+    PrecisionWarrior: "When in combat, you score a critical hit with 19-20.",
+    Provider: "When foraging or hunting, you obtain D6+1 Rations.",
+    QuickHands: "You have +2 Mastery on all DEX checks related to sleight of hand or thieving in general.",
+    Resilient: "You can ignore the first two Minor Injuries you suffer during a fight.",
+    Scout: "Ignore terrain movement penalties.",
+    Skirmisher: "Increase your Move by +1.",
+    Stealthy: "You have +2 Mastery on all DEX checks related to hiding and moving silently.",
+}

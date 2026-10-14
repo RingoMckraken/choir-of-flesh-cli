@@ -3,7 +3,9 @@
 //! This crate holds all game logic and has no terminal or UI dependencies.
 
 pub mod campaign;
+pub mod character;
 pub mod dice;
+pub mod gear;
 pub mod oracle;
 pub mod rules;
 pub mod settlement;

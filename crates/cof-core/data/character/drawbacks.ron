@@ -1,0 +1,13 @@
+// Drawback descriptions (p.15). Sickly says "Hardy Skill": the book's "Hardy Feat" is an erratum (Patrick, 2026-10-12).
+{
+    Arrogant: "You are overly confident and often ignore warnings and advice, making you more likely to fall into traps and dangerous situations.",
+    Clumsy: "You are awkward and prone to accidents, giving you -2 Burden to DEX-based tasks.",
+    Cowardly: "You are easily frightened and prone to stress, gaining an additional +1 Anguish when gaining any.",
+    Gullible: "You are easily fooled and often fall for scams, giving you a -2 Burden to WIL-based tasks when dealing with deceptive individuals.",
+    Ignorant: "Your character is uneducated and lacks basic knowledge in various areas, giving them a penalty of -1 to INT-based tasks when dealing with unfamiliar topics.",
+    MissingEye: "Your character is missing an eye, giving them -2 Burden to all perception-based tasks.",
+    Mute: "Your character is unable to speak, making it difficult for them to convey their thoughts and intentions to others.",
+    Sickly: "Your character is frail and susceptible to illness, suffering -2 Burden on Endurance checks. You cannot take this Drawback if you have the Hardy Skill.",
+    SlowHealer: "When you tally up the accumulated Trauma after combat, add 1 to the total.",
+    Slow: "Your character is slow-moving and sluggish. -2 Initiative.",
+}

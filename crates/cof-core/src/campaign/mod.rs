@@ -3,8 +3,8 @@
 //! In Choir of Flesh the **settlement is the protagonist**. Unbroken die often, and when one
 //! falls a successor is raised from the settlement's population so the game can go on
 //! indefinitely (the creator's intended way to play). So a campaign is named after its
-//! settlement, and characters come and go within it. The character roster and settlement
-//! are added to this struct in later milestones. New fields get serde defaults so older
+//! settlement, and characters come and go within it (the [`Roster`]). The settlement is
+//! added in a later milestone. New fields get serde defaults so older
 //! saves keep loading.
 
 mod journal;
@@ -16,6 +16,8 @@ pub use settings::CampaignSettings;
 pub use trackers::UsageTracker;
 
 use chrono::{DateTime, Utc};
+
+use crate::character::Roster;
 use serde::{Deserialize, Serialize};
 
 /// The save-file format this build writes. Bump it (and add a migration) only for changes
@@ -40,6 +42,13 @@ pub struct Campaign {
     /// Named Usage Dice the player is tracking.
     #[serde(default)]
     pub usage_dice: Vec<UsageTracker>,
+    /// The active Unbroken and the memorial of the fallen.
+    #[serde(default)]
+    pub roster: Roster,
+    /// Rumors gathered (p.102). They belong to the campaign, so they outlive a death; 10 of
+    /// them lead to an Incursion (p.110).
+    #[serde(default)]
+    pub rumors: u16,
 }
 
 impl Campaign {
@@ -56,6 +65,8 @@ impl Campaign {
             settings: CampaignSettings::default(),
             journal: Vec::new(),
             usage_dice: Vec::new(),
+            roster: Roster::default(),
+            rumors: 0,
         }
     }
 
@@ -101,5 +112,7 @@ mod tests {
         let campaign: Campaign = serde_json::from_str(json).unwrap();
         assert_eq!(campaign.settings, CampaignSettings::default());
         assert!(campaign.journal.is_empty() && campaign.usage_dice.is_empty());
+        assert!(campaign.roster.active.is_none() && campaign.roster.fallen.is_empty());
+        assert_eq!(campaign.rumors, 0);
     }
 }

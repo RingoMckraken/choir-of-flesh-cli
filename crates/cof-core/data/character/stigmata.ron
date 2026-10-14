@@ -1,0 +1,27 @@
+// Stigmata of the Abyss (D20), p.72-73.
+(
+    name: "Stigma of the Abyss",
+    die: D20,
+    entries: [
+        (1, 1, (title: "Weeping Skin", text: "Your skin constantly weeps a translucent, foul-smelling fluid. You suffer a -2 Burden on any social checks with those who are not also followers of the Flesh.")),
+        (2, 2, (title: "Boneless Limb", text: "One of your non-dominant arms becomes a boneless, flaccid appendage. It is useless for any task requiring strength or precision.")),
+        (3, 3, (title: "Silent Maw", text: "Your mouth fuses shut, leaving only smooth skin. You can no longer speak, scream, or eat normally, though you do not starve.")),
+        (4, 4, (title: "Unraveling Form", text: "A part of your body perpetually unravels into writhing tendrils of flesh before slowly knitting itself back together. The constant motion imposes a -1 Burden on all WIL-based checks.")),
+        (5, 5, (title: "Profane Hunger", text: "You lose the ability to gain sustenance from normal food. You can only avoid starvation by consuming raw meat, soil, or rotten things.")),
+        (6, 6, (title: "Faceless Visage", text: "Your facial features disappear, leaving you a smooth, blank canvas of skin resembling a writhing, faceless mound. You have Disadvantage on all social checks.")),
+        (7, 7, (title: "Meat Scent", text: "You permanently smell of a slaughterhouse. Animals are terrified of you, and your presence is obvious to any creature with a sense of smell from a great distance.")),
+        (8, 8, (title: "Heavy Flesh", text: "Your body is unnaturally dense. You weigh twice as much as you should. You suffer a -2 Burden on all checks related to swimming, climbing, or jumping.")),
+        (9, 9, (title: "Auditory Atrophy", text: "Your ears melt away, leaving only small, sealed holes. You are permanently deaf, and as such you have Disadvantage on all perception checks that involve hearing.")),
+        (10, 10, (title: "Constant Drip", text: "You have a wound that never clots and constantly drips a trail of thick, black blood. Any attempt to track you is made with Advantage.")),
+        (11, 11, (title: "Grave-Larynx", text: "You can no longer produce your own voice. You can only speak with a perfect mimicry of the last humanoid to die within 20 feet of you.")),
+        (12, 12, (title: "Spinal Atrophy", text: "Your spine curves and weakens into a permanent stoop. You suffer a -2 Burden on all STR checks related to lifting and your height is reduced by one-third.")),
+        (13, 13, (title: "Nerve Death", text: "You lose the sense of touch in your hands and feet. You suffer a -2 Burden on all DEX-based tasks requiring fine manipulation and automatically fail any checks related to detecting pressure plates or subtle floor-based traps.")),
+        (14, 14, (title: "Symbiotic Hunger", text: "A second, rudimentary head grows from your shoulder. It is not sentient, but it screams incessantly unless you feed it 1x Ration each day.")),
+        (15, 15, (title: "Corporeal Tremors", text: "You suffer from constant, uncontrollable muscle spasms. All of your ranged attacks are made with Disadvantage.")),
+        (16, 16, (title: "Photophobia", text: "Your eyes have become pale, milky orbs, accustomed to the Abyss. You suffer -1 Burden on all checks when in daylight or similarly bright conditions.")),
+        (17, 17, (title: "Mnemonic Erosion", text: "Your memories sometimes shift. Once per session, the GM (or you by using the Action and Theme tables) can inform you that you misremember a key detail about your past, a quest, or the identity of an ally.")),
+        (18, 18, (title: "Predator's Aura", text: "You exude an aura of silent, mindless predation. Animals and young children are instinctively terrified of you, and will flee or become hostile in your presence.")),
+        (19, 19, (title: "Shedding Flesh", text: "You periodically shed your skin like a reptile or drop small, moist chunks of flesh. You leave an obvious trail wherever you go, making stealth for you or your group nearly impossible for long periods.")),
+        (20, 20, (title: "Unstable Face", text: "Your facial features constantly shift and flow like wax. You cannot be reliably identified by anyone because every 24 hours you have the features of a different person. You cannot build a reputation, good or bad, as no one can recognize you from one day to the next.")),
+    ],
+)

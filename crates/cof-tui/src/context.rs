@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 use cof_core::campaign::Campaign;
+use cof_core::character::Character;
 use cof_core::storage::{AppConfig, CampaignList, CampaignStore, SaveLocation, StorageError};
 
 /// A one-line message shown at the bottom of the screen until the next key press.
@@ -51,6 +52,23 @@ impl AppContext {
 
     pub fn error(&mut self, message: impl Into<String>) {
         self.status = Some(Status::Error(message.into()));
+    }
+
+    /// The open campaign's active Unbroken, if there is one.
+    pub fn character(&self) -> Option<&Character> {
+        self.campaign.as_ref()?.roster.active.as_ref()
+    }
+
+    pub fn character_mut(&mut self) -> Option<&mut Character> {
+        self.campaign.as_mut()?.roster.active.as_mut()
+    }
+
+    /// Writes a journal entry and autosaves.
+    pub fn record(&mut self, source: &str, text: impl Into<String>) {
+        if let Some(campaign) = self.campaign.as_mut() {
+            campaign.record(source, text);
+            self.save_campaign();
+        }
     }
 
     /// Re-reads the campaign folder.

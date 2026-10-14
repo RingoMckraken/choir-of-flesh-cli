@@ -1,0 +1,27 @@
+// Gifts of the Unmade (D20), p.70-71.
+(
+    name: "Gift of the Unmade",
+    die: D20,
+    entries: [
+        (1, 1, (title: "Tendinous Lasher", text: "One of your arms elongates into a whip-like tendon tipped with a shard of bone. You can make melee attacks with it up to 2 squares away that adds +2 Mastery to your attack rolls and deals Slashing damage.")),
+        (2, 2, (title: "Chitinous Plates", text: "Thick, bony plates erupt from your skin, forming a partial carapace. You gain a permanent +1 DR.")),
+        (3, 3, (title: "Caustic Spittle", text: "As a Standard Action you can vomit a stream of digestive acid at a target within 3 squares. This is a ranged attack that deals Corrosive damage and inflicts the Burning condition on a successful hit. You can use this once per combat.")),
+        (4, 4, (title: "Hyper-Adrenal Gland", text: "A pulsating tumor grows on your neck or back. Once per day, you can trigger it to gain an extra Standard Action on your turn.")),
+        (5, 5, (title: "Amorphous Flesh", text: "Your bone structure becomes partially fluid. You can move through spaces as small as a quarter of your normal size without penalty. You gain a +2 Mastery on any check made to escape grapples or bonds.")),
+        (6, 6, (title: "Grasping Pseudopod", text: "A thick, boneless tendril emerges from your torso. It can hold items, open doors, or manipulate objects as a third limb, though it is too clumsy for fine tasks like writing or wielding a weapon effectively.")),
+        (7, 7, (title: "Marrow Spikes", text: "Your bones perpetually grow and break through your skin. As a Free Action, you can extend or retract sharp bone spikes from your knuckles and elbows. Your unarmed attacks now deal an additional Minor Injury every time you strike.")),
+        (8, 8, (title: "Ceaseless Regeneration", text: "Your flesh crawls and reforms constantly. At the start of your turn, you automatically heal 1 Minor Injury. This cannot heal Major Injuries.")),
+        (9, 9, (title: "Cluster Eyes", text: "A patch of your skin grows a cluster of twitching, unblinking eyes. You can see in dim light as if it were bright light, and you cannot be surprised by attacks from behind.")),
+        (10, 10, (title: "The Hunger Within", text: "You have a gaping, fanged maw on your stomach or palm. As a melee attack, you can bite a target. If the attack hits, they are Poisoned.")),
+        (11, 11, (title: "Solvent Touch", text: "Your hands secrete a powerful enzyme. By concentrating for one minute while in physical contact, you can dissolve a 5 x 5 inches section of non-living organic material (wood, leather, rope). This cannot be used on creatures.")),
+        (12, 12, (title: "Barbed Hide", text: "Your skin is covered in sharp, backward-facing barbs. Any creature that hits you with an unarmed or natural weapon attack suffers 1 Minor Injury.")),
+        (13, 13, (title: "Corpulent Storage", text: "Your torso becomes a hollow, fleshy cavity. You gain 5 extra inventory slots, but any items stored within are covered in a thick, foul-smelling slime when retrieved.")),
+        (14, 14, (title: "Slithering Tail", text: "Your legs fuse into a single, powerful serpentine tail. Your Move speed increases by +1. You cannot be knocked Prone by conventional means.")),
+        (15, 15, (title: "Flesh-Wisp", text: "You can detach a fist-sized glob of your own flesh, which can scuttle on tiny legs. You can telepathically sense its general direction and emotional state (safe, threatened). It has a Move of 1 and dies if it takes any damage, reforming on your body after 24 hours.")),
+        (16, 16, (title: "Tremor Sense", text: "By placing your bare skin against the ground, you can automatically detect any moving creature or object also in contact with the ground within a 90 feet radius.")),
+        (17, 17, (title: "Chameleonic Skin", text: "Your skin writhes and changes color to mimic your surroundings. You have Advantage on all DEX checks related to hiding when you remain still for at least one round.")),
+        (18, 18, (title: "Implanting Spur", text: "As a ranged attack, you can fire a sharpened bone spur from your wrist to a target up to 3 squares away. If it hits, it deals 1 Minor Injury and burrows into the target's flesh. At the start of their turn, they suffer an additional Minor Injury every round, unless they use a Standard Action to rip it out.")),
+        (19, 19, (title: "Abyssal Glimpse", text: "Once per combat and as a Standard Action, you can peel back your face to reveal a swirling vortex of flesh within. Make a check against the target's WIL, if you succeed they are Frightened (2).")),
+        (20, 20, (title: "Mucous Trail", text: "You constantly secrete a thick, viscous slime. You can choose to leave a trail behind you, making the ground in any square you pass through Difficult Terrain (page 51) for one hour.")),
+    ],
+)

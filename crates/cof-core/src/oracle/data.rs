@@ -85,6 +85,11 @@ pub(super) static TABLES: LazyLock<Tables> = LazyLock::new(|| Tables {
     climaxes: table!("oracle/undertaking_climaxes.ron"),
 });
 
+/// The Random Names table (D100, p.26–27), shared with character creation.
+pub fn name_table() -> &'static RollTable<NamePair> {
+    &TABLES.names
+}
+
 fn load<T: DeserializeOwned>(path: &str, source: &str) -> RollTable<T> {
     RollTable::from_ron(source).unwrap_or_else(|e| panic!("bundled table {path} is invalid: {e}"))
 }

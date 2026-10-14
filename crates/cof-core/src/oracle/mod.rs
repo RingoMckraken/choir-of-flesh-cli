@@ -10,7 +10,7 @@ mod prompts;
 mod undertaking;
 mod yes_no;
 
-pub use data::{NamePair, SurpriseRow, UndertakingEntry};
+pub use data::{NamePair, SurpriseRow, UndertakingEntry, name_table};
 pub use npc::{Disposition, Npc, generate_npc};
 pub use prompts::{
     ActionResolution, ActionTheme, Interest, SurpriseEvent, action_theme, anything_of_interest,

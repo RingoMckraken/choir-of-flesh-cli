@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use super::Breakdown;
 use crate::dice::Die;
 
@@ -5,7 +7,7 @@ use crate::dice::Die;
 ///
 /// Every time Anguish is gained, the character makes an **Anguish Check**: roll a D20, and
 /// if the result is less than or equal to the new total, they suffer a [`Breakdown`].
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct Anguish {
     current: u8,
     /// Points that can never be removed (from The Voice Within, p.49).
